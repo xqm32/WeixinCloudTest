@@ -67,10 +67,10 @@ def get_count():
     counter = Counters.query.filter(Counters.id == 1).first()
     return make_succ_response(0) if counter is None else make_succ_response(counter.count)
 
-@app.route('/api/tiktok', methods=['GET'])
-def tiktok():
+@app.route('/api/tiktok/<path>', methods=['GET'])
+def tiktok(path):
     """
     :return: TikTok 视频下载测试
     """
-    TK.video_download('https://v.douyin.com/LG7nvHP/', 'no')
-    return 'Downloaded Successfully'
+    resp = TK.video_download(f'https://v.douyin.com/{path}', 'no')
+    return (resp.text, resp.status_code, resp.headers.items())

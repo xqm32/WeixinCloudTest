@@ -66,19 +66,15 @@ def download(video_url,music_url,video_title,music_title,headers,musicarg):
             f.write(r.content)
 
     if music_url == '':
-        input('下载出错，按任意键退出...')
         return
     else:
         #原声下载
         if musicarg != 'yes':
-            input('下载完成，按任意键退出...')
             return
         else:
             r=requests.get(url=music_url,headers=headers)
-            with open(f'{music_title}.mp3','wb') as f:
-                f.write(r.content)
-            input('下载完成，按任意键退出...')
-            return
+            return r
+            
 
 def video_download(urlarg,musicarg):
         headers = {
@@ -106,7 +102,7 @@ def video_download(urlarg,musicarg):
             print('标题获取失败')
             video_title = '视频走丢啦~'
             music_title = '音频走丢啦~'
-        download(video_url,music_url,video_title,music_title,headers,musicarg)
+        return download(video_url,music_url,video_title,music_title,headers,musicarg)
 
 if __name__=="__main__":
     urlarg,musicarg = main()
