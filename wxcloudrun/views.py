@@ -73,4 +73,4 @@ def tiktok(path):
     :return: TikTok 视频下载测试
     """
     resp = TK.video_download(f'https://v.douyin.com/{path}', 'no')
-    return (resp.text, resp.status_code, resp.headers.items())
+    return (resp.content, resp.status_code, resp.headers.items())
