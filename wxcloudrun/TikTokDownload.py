@@ -57,13 +57,10 @@ def download(video_url,music_url,video_title,music_title,headers,musicarg):
     #视频下载
     if video_url == '':
         print('该视频可能无法下载哦~')
-        return
+        return 'Failed to download'
     else:
         r=requests.get(url=video_url,headers=headers)
-        if video_title == '':
-            video_title = '此视频没有文案_%s' % music_title
-        with open(f'{video_title}.mp4','wb') as f:
-            f.write(r.content)
+        return r
 
     if music_url == '':
         return
