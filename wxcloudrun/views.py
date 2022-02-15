@@ -71,6 +71,14 @@ def get_count():
 @app.route('/api/tiktok/<path>', methods=['GET'])
 def tiktok(path):
     """
-    :return: TikTok 视频真实链接
+    :return: TikTok 视频链接
     """
     return TK.getVideoUrl(f'https://v.douyin.com/{path}')
+
+
+@app.route('/api/real/<path>', methods=['GET'])
+def tiktok(path):
+    """
+    :return: TikTok 视频真实链接
+    """
+    return TK.getRealUrl(f'https://v.douyin.com/{path}')
