@@ -77,7 +77,7 @@ def tiktok(path):
 
 
 @app.route('/api/real/<path>', methods=['GET'])
-def tiktok(path):
+def real(path):
     """
     :return: TikTok 视频真实链接
     """
